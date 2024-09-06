@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
  
+@font-face {
+	font-family: 'Lexend';
+	src: url('/fonts/Lexend-VariableFont_wght.ttf');
+	font-weight: 100 200 300 400 500 600 700 800 900;
+}
+
+@font-face {
+	font-family: 'Figtree';
+	src: url('/fonts/Figtree-VariableFont_wght.ttf');
+	font-weight: 100 200 300 400 500 600 700 800 900;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
