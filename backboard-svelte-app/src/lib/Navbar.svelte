@@ -1,5 +1,6 @@
 <script lang="ts">
   import Logo from "$lib/images/backboard-logo.svg";
+  import { page } from '$app/stores';
   let isMenuOpen = false;
 
   function toggleMenu() {
@@ -17,10 +18,8 @@
     </logo>
 
     <div class="hidden md:flex space-x-4">
-      <a href="/" class="hover:text-gray-300">Home</a>
-      <a href="/about" class="hover:text-gray-300">About</a>
-      <a href="/contact" class="hover:text-gray-300">Contact</a>
-      <a href="/login" class="hover:text-gray-300">Login</a>
+      <a href="/" class="hover:text-gray-300" class:text-accent={$page.url.pathname === '/'}>dashboard</a>
+      <a href="/chat" class="hover:text-gray-300" class:text-accent={$page.url.pathname === '/chat'}>chat</a>
     </div>
 
     <button
@@ -45,20 +44,12 @@
 
   {#if isMenuOpen}
     <div class="md:hidden mt-4">
-      <a href="/" class="block py-2 px-4 text-sm hover:bg-gray-700"
-        >Home</a
+      <a href="/" class="block py-2 px-4 text-sm hover:bg-gray-700" class:text-accent={$page.url.pathname === '/'}
+        >dashboard</a
       >
       <a
-        href="/about"
-        class="block py-2 px-4 text-sm hover:bg-gray-700">About</a
-      >
-      <a
-        href="/contact"
-        class="block py-2 px-4 text-sm hover:bg-gray-700">Contact</a
-      >
-      <a
-        href="/login"
-        class="block py-2 px-4 text-sm hover:bg-gray-700">Login</a
+        href="/chat"
+        class="block py-2 px-4 text-sm hover:bg-gray-700" class:text-accent={$page.url.pathname === '/chat'}>chat</a
       >
     </div>
   {/if}
