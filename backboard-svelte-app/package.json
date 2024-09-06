@@ -23,6 +23,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@aws-sdk/client-bedrock": "^3.645.0",
 		"@internationalized/date": "^3.5.5",
 		"bits-ui": "^0.21.13",
 		"clsx": "^2.1.1",
