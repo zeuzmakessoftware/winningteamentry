@@ -8,16 +8,6 @@
     const sendMessage = async () => {
       if (!userInput && !selectedFile) return;
   
-      // Add user's message or file to the conversation
-      if (selectedFile) {
-        conversation = [
-          ...conversation,
-          { role: 'user', content: `File: ${selectedFile.name}` },
-        ];
-      } else {
-        conversation = [...conversation, { role: 'user', content: userInput }];
-      }
-  
       loading = true;
   
       try {
@@ -38,7 +28,7 @@
         const response = await fetch('/api/summarizer', {
           method: 'POST',
           headers: selectedFile ? {} : { 'Content-Type': 'application/json' },
-          body: selectedFile ? body : JSON.stringify({ prompt: userInput }),
+          body: JSON.stringify({ prompt: userInput }),
         });
   
         if (!response.ok) {
