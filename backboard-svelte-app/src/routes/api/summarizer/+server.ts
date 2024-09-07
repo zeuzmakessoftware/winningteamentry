@@ -63,7 +63,7 @@ export const POST: RequestHandler = async ({ request }) => {
   return new Response(result, {
     status: 200,
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "text/plain",
     },
   });
 };

@@ -113,16 +113,16 @@
         <!-- File upload input -->
             <div class="relative">
             <input type="file" on:change={handleFileChange} class="absolute inset-0 opacity-0 w-full h-full cursor-pointer" />
-            <div class="flex items-center justify-center bg-blue-500 hover:bg-blue-500 transition text-white font-bold py-2 px-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                {selectedFile ? selectedFile.name : "Upload File"}
+            <div class="flex items-center justify-center bg-black/30 hover:bg-black/50 transition text-white py-2 px-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                {selectedFile ? selectedFile.name : "upload file"}
             </div>
             </div>        
         <button
           on:click={sendMessage}
           disabled={loading}
-          class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 disabled:opacity-50 transition"
+          class="bg-accent text-white px-4 py-2 rounded-lg hover:bg-black disabled:opacity-50 transition"
         >
-          Send
+          send
         </button>
       </div>
     </div>
