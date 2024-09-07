@@ -15,6 +15,8 @@ const MODEL_ID = "anthropic.claude-3-sonnet-20240229-v1:0";
 export const POST: RequestHandler = async ({ request }) => {
   const { prompt } = await request.json();
 
+  console.log("client")
+
   const client = new BedrockRuntimeClient({
     region: AWS_REGION,
     credentials: {
@@ -24,11 +26,15 @@ export const POST: RequestHandler = async ({ request }) => {
     },
   });
 
+  console.log("payload")
+
   const payload = {
     anthropic_version: "bedrock-2023-05-31",
     max_tokens: 200,
     messages: [{ role: "user", content: [{ type: "text", text: `You are a summarizer for companies that specialize in giving the proper data for venture capitolists. Answer the question. ${prompt}` }] }],
   };
+
+  console.log("apiResponse")
 
   const apiResponse = await client.send(
     new InvokeModelCommand({
@@ -37,15 +43,22 @@ export const POST: RequestHandler = async ({ request }) => {
       modelId: MODEL_ID,
     })
   );
+  console.log("responses")
 
   const decodedResponseBody = new TextDecoder().decode(apiResponse.body);
   const responseBody = JSON.parse(decodedResponseBody);
   const responses = responseBody.content;
 
+  console.log("result")
+
   const result =
     responses.length === 1
       ? responses[0].text
       : "Multiple responses received: " + JSON.stringify(responses);
+
+  console.log(result)
+
+  console.log("response")
 
   return new Response(result, {
     status: 200,
