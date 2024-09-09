@@ -10,7 +10,7 @@ import {
 } from "$env/static/private";
 
 const AWS_REGION = "us-west-2";
-const MODEL_ID = "anthropic.claude-3-sonnet-20240229-v1:0";
+const MODEL_ID = "cohere.command-text-v14";
 
 export const POST: RequestHandler = async ({ request }) => {
   const { prompt } = await request.json();
@@ -29,7 +29,6 @@ export const POST: RequestHandler = async ({ request }) => {
   console.log("payload")
 
   const payload = {
-    anthropic_version: "bedrock-2023-05-31",
     max_tokens: 200,
     messages: [{ role: "user", content: [{ type: "text", text: `You are a summarizer for companies that specialize in giving the proper data for venture capitolists. Answer the question. ${prompt}` }] }],
   };
